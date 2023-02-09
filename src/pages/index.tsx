@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Home() {
@@ -12,7 +11,36 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main></main>
+      <main className="p-4 flex flex-col ">
+        <section>
+          <h1 className="text-6xl font-semibold">The bible</h1>
+
+          <div className="mt-2 flex items-center">
+            <div className="mt-0.5 mr-2 border-b border-black w-2/4 h-0.5"></div>
+            <h2 className="text-lg italic">King James Version</h2>
+          </div>
+          <p className="mt-6 w-11/12 text-slate-800">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem dolorum accusantium ratione ipsa alias maiores reprehenderit
+            rem praesentium aut. Amir dolir sit amet consectetur.
+          </p>
+        </section>
+
+        <section className="mt-12 flex flex-col">
+          <p className="font-semibold">Choose a testament:</p>
+          <div className="mt-6 flex flex-col">
+            <Link className="p-4 w-full flex justify-center text-center border outline-none rounded-full" href={'/new-testament'}>
+              New testament
+            </Link>
+            <Link className="p-4 mt-4 w-full flex justify-center text-center border outline-none rounded-full" href={'/old-testament'}>
+              Old testament
+            </Link>
+          </div>
+        </section>
+      </main>
+
+      <footer className="absolute bottom-0 left-0 p-2 w-full flex items-center gap-x-4 justify-center border-2">
+        <p>{`Bible app - ${new Date().getFullYear()}`}</p>
+      </footer>
     </>
   );
 }
