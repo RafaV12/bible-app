@@ -1,0 +1,38 @@
+{
+  "books": [
+    {
+      "title": "The Gospels",
+      "content": ["Matthew", "Mark", "Luke", "John"]
+    },
+    {
+      "title": "Book of History",
+      "content": ["Acts"]
+    },
+    {
+      "title": "Pauline Epistles",
+      "content": [
+        "Romans",
+        "1 Corinthians",
+        "2 Corinthians",
+        "Galatians",
+        "Ephesians",
+        "Philippians",
+        "Colossians",
+        "1 Thessalonians",
+        "2 Thessalonians",
+        "1 Timothy",
+        "2 Timothy",
+        "Titus",
+        "Philemon"
+      ]
+    },
+    {
+      "title": "General Epistles",
+      "content": ["Hebrews", "James", "1 Peter", "2 Peter", "1 John", "2 John", "3 John", "Jude"]
+    },
+    {
+      "title": "Book of Prophecy",
+      "content": ["Revelation"]
+    }
+  ]
+}

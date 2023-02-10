@@ -1,0 +1,112 @@
+{
+  "chapters": [
+    {
+      "title": "Matthew",
+      "numOfChapters": 28
+    },
+    {
+      "title": "Mark",
+      "numOfChapters": 16
+    },
+    {
+      "title": "Luke",
+      "numOfChapters": 24
+    },
+    {
+      "title": "John",
+      "numOfChapters": 21
+    },
+    {
+      "title": "Acts",
+      "numOfChapters": 28
+    },
+    {
+      "title": "Romans",
+      "numOfChapters": 16
+    },
+    {
+      "title": "1 Corinthians",
+      "numOfChapters": 16
+    },
+    {
+      "title": "2 Corinthians",
+      "numOfChapters": 12
+    },
+    {
+      "title": "Galatians",
+      "numOfChapters": 6
+    },
+    {
+      "title": "Ephesians",
+      "numOfChapters": 6
+    },
+    {
+      "title": "Philippians",
+      "numOfChapters": 4
+    },
+    {
+      "title": "Colossians",
+      "numOfChapters": 4
+    },
+    {
+      "title": "1 Thessalonians",
+      "numOfChapters": 5
+    },
+    {
+      "title": "2 Thessalonians",
+      "numOfChapters": 4
+    },
+    {
+      "title": "1 Timothy",
+      "numOfChapters": 6
+    },
+    {
+      "title": "2 Timothy",
+      "numOfChapters": 28
+    },
+    {
+      "title": "Titus",
+      "numOfChapters": 3
+    },
+    {
+      "title": "Philemon",
+      "numOfChapters": 1
+    },
+    {
+      "title": "Hebrews",
+      "numOfChapters": 13
+    },
+    {
+      "title": "James",
+      "numOfChapters": 5
+    },
+    {
+      "title": "1 Peter",
+      "numOfChapters": 5
+    },
+    {
+      "title": "2 Peter",
+      "numOfChapters": 3
+    },
+    {
+      "title": "1 John",
+      "numOfChapters": 5
+    },
+    {
+      "title": "2 John",
+      "numOfChapters": 1
+    },
+    {
+      "title": "3 John",
+      "numOfChapters": 1
+    },
+    {
+      "title": "Jude",
+      "numOfChapters": 1
+    },
+    {
+      "title": "Revelation",
+      "numOfChapters": 22
+    }
+  ]
+}
