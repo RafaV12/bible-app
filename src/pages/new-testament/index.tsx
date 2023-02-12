@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Image from 'next/image';
 import Link from 'next/link';
 
 import data from '@/../bible/new-testament/books.json';
@@ -18,29 +19,27 @@ export default function NewTestament() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="p-4 w-full h-screen flex flex-col">
-        <h1 className="mb-4 font-semibold">New Testament</h1>
-        <section className="flex flex-col">
-          {data.books.map((book: Book, index) => (
-            <figure key={index} className="mb-4">
-              <figcaption className="mb-1 underline">{book.title}</figcaption>
-              <ul>
-                {book.content.map((item, index) => (
-                  <li key={index}>
-                    <Link href={`/new-testament/${item.replaceAll(' ', '-').toLowerCase()}`} className="flex items-center">
-                      {item}
-                      <svg className="mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                        <path fill="none" d="M0 0h24v24H0z" />
-                        <path d="M16 12l-6 6V6z" />
-                      </svg>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </figure>
-          ))}
-        </section>
-      </main>
+      <h1 className="mb-4 font-semibold">New Testament</h1>
+      <section className="flex flex-col">
+        {data.books.map((book: Book, index) => (
+          <figure key={index} className="mb-4">
+            <figcaption className="mb-1 underline">{book.title}</figcaption>
+            <ul>
+              {book.content.map((item, index) => (
+                <li key={index}>
+                  <Link href={`/new-testament/${item.replaceAll(' ', '-').toLowerCase()}`} className="flex items-center">
+                    {item}
+                    <svg className="mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                      <path fill="none" d="M0 0h24v24H0z" />
+                      <path d="M16 12l-6 6V6z" />
+                    </svg>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </figure>
+        ))}
+      </section>
     </>
   );
 }
