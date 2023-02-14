@@ -26,21 +26,7 @@ import thirdJohn from '@/../bible/new-testament/3-john.json';
 import jude from '@/../bible/new-testament/jude.json';
 import revelation from '@/../bible/new-testament/revelation.json';
 
-interface Verse {
-  verse: string;
-  text: string;
-}
-
-interface Chapter {
-  chapter: string;
-  verses: Verse[];
-}
-
-interface Book {
-  book: string;
-  numOfChapters: number;
-  chapters: Chapter[];
-}
+import { Book } from '@/types';
 
 export default function useBook(book: string) {
   let bookToParse = {} as Book;
