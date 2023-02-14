@@ -1,5 +1,6 @@
 {
   "book": "Exodus",
+  "numOfChapters": 40,
   "chapters": [
     {
       "chapter": "1",

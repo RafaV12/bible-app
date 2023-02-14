@@ -1,5 +1,6 @@
 {
   "book": "Jonah",
+  "numOfChapters": 4,
   "chapters": [
     {
       "chapter": "1",

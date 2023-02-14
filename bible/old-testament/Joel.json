@@ -1,5 +1,6 @@
 {
   "book": "Joel",
+  "numOfChapters": 3,
   "chapters": [
     {
       "chapter": "1",

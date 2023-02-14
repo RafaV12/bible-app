@@ -2,14 +2,25 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import data from '@/../bible/new-testament/books.json';
+import { useRouter } from 'next/router';
+
+import newTestamentBooks from '@/../bible/new-testament/books.json';
+import oldTestamentBooks from '@/../bible/old-testament/books.json';
 
 interface Book {
   title: string;
   content: string[];
 }
 
-export default function NewTestament() {
+export default function Testament() {
+  const router = useRouter();
+  const { testament } = router.query;
+  let data;
+
+  if (testament === 'new-testament') data = newTestamentBooks;
+  if (testament === 'old-testament') data = oldTestamentBooks;
+  if (data === undefined) return <h1>Loading...</h1>;
+
   return (
     <>
       <Head>
@@ -19,15 +30,15 @@ export default function NewTestament() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1 className="mb-4 font-semibold">New Testament</h1>
+      <h1 className="mb-4 font-semibold">{testament}</h1>
       <section className="flex flex-col">
-        {data.books.map((book: Book, index) => (
+        {data?.books.map((book: Book, index) => (
           <figure key={index} className="mb-4">
             <figcaption className="mb-1 underline">{book.title}</figcaption>
             <ul>
               {book.content.map((item, index) => (
                 <li key={index}>
-                  <Link href={`/new-testament/${item.replaceAll(' ', '-').toLowerCase()}`} className="flex items-center">
+                  <Link href={`/${testament}/${item.replaceAll(' ', '-').toLowerCase()}`} className="flex items-center">
                     {item}
                     <svg className="mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                       <path fill="none" d="M0 0h24v24H0z" />

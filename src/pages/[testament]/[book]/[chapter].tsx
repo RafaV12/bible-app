@@ -17,7 +17,8 @@ export default function Chapter() {
   };
   const [fontSize, setFontSize] = useState<string>('md');
   const testament = router.asPath.split('/')[1];
-  const bookToParse = useBook(book as string);
+  console.log(testament)
+  const bookToParse = useBook(book as string, testament);
 
   const changeFontSize = () => {
     switch (fontSize) {

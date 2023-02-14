@@ -5,9 +5,8 @@ import useBook from '@/hooks/useBook';
 
 export default function Chapters() {
   const router = useRouter();
-  const { book } = router.query;
-
-  const bookToParse = useBook(book as string);
+  const { book, testament } = router.query;
+  const bookToParse = useBook(book as string, testament as string);
 
   if (bookToParse === undefined) return <>Loading...</>;
 
@@ -23,7 +22,7 @@ export default function Chapters() {
       <h1 className="w-full h-12 flex items-center justify-center font-semibold text-lg">{bookToParse.book}</h1>
       <section className="container flex flex-col items-start gap-y-4">
         {bookToParse.chapters?.map(({ chapter, verses }) => (
-          <Link key={chapter} href={`${book}/${chapter}`} className="h-full flex">
+          <Link key={chapter} href={`/${testament}/${book}/${chapter}`} className="h-full flex">
             <div>
               <p className="font-semibold underline">Chapter {chapter}</p>
               <p>{`${verses.length} verses`}</p>

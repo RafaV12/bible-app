@@ -1,5 +1,6 @@
 {
   "book": "Job",
+  "numOfChapters": 42,
   "chapters": [
     {
       "chapter": "1",

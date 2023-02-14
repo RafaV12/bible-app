@@ -1,5 +1,6 @@
 {
   "book": "Genesis",
+  "numOfChapters": 50,
   "chapters": [
     {
       "chapter": "1",
