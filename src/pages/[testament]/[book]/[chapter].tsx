@@ -7,7 +7,7 @@ import { useState } from 'react';
 
 export default function Chapter() {
   const router = useRouter();
-  const { book, chapter } = router.query;
+  const { testament, book, chapter } = router.query;
   const FontSizeOptions: { [key: string]: number } = {
     // sizes in px
     sm: 14,
@@ -16,9 +16,7 @@ export default function Chapter() {
     xl: 24,
   };
   const [fontSize, setFontSize] = useState<string>('md');
-  const testament = router.asPath.split('/')[1];
-  console.log(testament)
-  const bookToParse = useBook(book as string, testament);
+  const bookToParse = useBook(book as string, testament as string);
 
   const changeFontSize = () => {
     switch (fontSize) {
