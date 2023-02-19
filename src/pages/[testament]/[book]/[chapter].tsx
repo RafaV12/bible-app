@@ -1,13 +1,23 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 
+import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
+import { addToFavorites } from '@/store/favoritesSlice';
+
+import { v4 as uuidv4 } from 'uuid';
+
 import useBook from '@/hooks/useBook';
-import { useState } from 'react';
 
 export default function Chapter() {
   const router = useRouter();
-  const { testament, book, chapter } = router.query;
+  const { testament, book, chapter } = router.query as { testament: string; book: string; chapter: string };
+  const bookToParse = useBook(book, testament);
+
+  const dispatch = useAppDispatch();
+
+  const [fontSize, setFontSize] = useState<string>('md');
   const FontSizeOptions: { [key: string]: number } = {
     // sizes in px
     sm: 14,
@@ -15,9 +25,6 @@ export default function Chapter() {
     lg: 20,
     xl: 24,
   };
-  const [fontSize, setFontSize] = useState<string>('md');
-  const bookToParse = useBook(book as string, testament as string);
-
   const changeFontSize = () => {
     switch (fontSize) {
       case 'sm':
@@ -69,10 +76,14 @@ export default function Chapter() {
           <Link href={`/${testament}`}>
             <i className="fa-solid fa-book-bible text-2xl text-blue-400 "></i>
           </Link>
+
+          <button className="disabled:text-red-500">
+            <i onClick={() => dispatch(addToFavorites({ id: uuidv4(), testament, book, chapter }))} className="fa-solid fa-heart"></i>
+          </button>
         </div>
 
         <Link
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-4 py-1 bg-white shadow-md rounded-lg border-t"
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-4 py-1 bg-white "
           href={`/${testament}/${book}`}
         >{`${bookToParse.book} : ${chapter}`}</Link>
 
