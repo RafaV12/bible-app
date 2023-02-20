@@ -4,9 +4,9 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 
 import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
-import { addToFavorites } from '@/store/favoritesSlice';
+import { addToFavorites, selectAllFavorites } from '@/store/favoritesSlice';
 
-import { v4 as uuidv4 } from 'uuid';
+import { isObjInArray } from '@/utils';
 
 import useBook from '@/hooks/useBook';
 
@@ -16,7 +16,9 @@ export default function Chapter() {
   const bookToParse = useBook(book, testament);
 
   const dispatch = useAppDispatch();
+  const favorites = useAppSelector(selectAllFavorites);
 
+  // Take this out and make it a global state, possibly.
   const [fontSize, setFontSize] = useState<string>('md');
   const FontSizeOptions: { [key: string]: number } = {
     // sizes in px
@@ -77,8 +79,8 @@ export default function Chapter() {
             <i className="fa-solid fa-book-bible text-2xl text-blue-400 "></i>
           </Link>
 
-          <button className="disabled:text-red-500">
-            <i onClick={() => dispatch(addToFavorites({ id: uuidv4(), testament, book, chapter }))} className="fa-solid fa-heart"></i>
+          <button disabled={isObjInArray(favorites, { testament, book, chapter })} className="disabled:text-red-500 text-slate-300">
+            <i onClick={() => dispatch(addToFavorites({ testament, book, chapter }))} className="fa-solid fa-heart"></i>
           </button>
         </div>
 

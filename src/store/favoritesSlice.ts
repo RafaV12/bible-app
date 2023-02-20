@@ -1,7 +1,9 @@
-import { createSlice, PayloadAction, current } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
+import { isObjInArray } from '@/utils';
+import { RootState } from './configureStore';
 
 interface FavoriteChapter {
-  id: string;
   testament: string;
   book: string;
   chapter: string;
@@ -14,17 +16,26 @@ export const favoritesSlice = createSlice({
   initialState,
   reducers: {
     addToFavorites: (state: FavoriteChapter[], action: PayloadAction<FavoriteChapter>) => {
-      // Check if obj already exist in our array *NEEDS IMPROVEMENT*
-      const check = state.find(
-        (c) => c.testament === action.payload.testament && c.book === action.payload.book && c.chapter === action.payload.chapter
-      );
-      if (check === undefined) {
-        state.push(action.payload);
+      if (isObjInArray(state, action.payload)) return;
+      state.push(action.payload);
+    },
+
+    deleteFromFavorites: (state: FavoriteChapter[], action: PayloadAction<FavoriteChapter>) => {
+      if (isObjInArray(state, action.payload)) {
+        const favoriteToRemove = state.find(
+          (favItem) =>
+            favItem.testament === action.payload.testament &&
+            favItem.book === action.payload.book &&
+            favItem.chapter === action.payload.chapter
+        );
+        state.splice(state.indexOf(favoriteToRemove!), 1);
       }
     },
   },
 });
 
-export const { addToFavorites } = favoritesSlice.actions;
+export const { addToFavorites, deleteFromFavorites } = favoritesSlice.actions;
+
+export const selectAllFavorites = (state: RootState) => state.favorites;
 
 export default favoritesSlice.reducer;
