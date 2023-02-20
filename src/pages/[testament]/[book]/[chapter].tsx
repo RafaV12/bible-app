@@ -2,8 +2,10 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 import useBook from '@/hooks/useBook';
+import { FontSizeContextProvider } from '@/context/FontSizeContext';
 
 import NavBar from '@/components/page-components/chapter/NavBar';
+import Chapters from '@/components/page-components/chapter/Chapters';
 import BookmarkBtn from '@/components/page-components/chapter/BookmarkBtn';
 
 export default function Chapter() {
@@ -24,25 +26,10 @@ export default function Chapter() {
 
       <BookmarkBtn />
 
-      <NavBar testament={testament} book={book} chapter={chapter} bookToParse={bookToParse} router={router} />
-
-      {/* chapters container */}
-      <ul className="flex flex-col">
-        {bookToParse.chapters
-          .find((c) => c.chapter === chapter)
-          ?.verses.map((verse) => (
-            <li
-              // style={{
-              //   fontSize: `${FontSizeOptions[fontSize]}px`,
-              // }}
-              key={verse.verse}
-              className="flex"
-            >
-              <span className="mr-2 font-semibold">{verse.verse}</span>
-              <p>{verse.text}</p>
-            </li>
-          ))}
-      </ul>
+      <FontSizeContextProvider>
+        <Chapters bookToParse={bookToParse} chapter={chapter} />
+        <NavBar testament={testament} book={book} chapter={chapter} bookToParse={bookToParse} router={router} />
+      </FontSizeContextProvider>
     </>
   );
 }

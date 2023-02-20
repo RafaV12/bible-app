@@ -1,49 +1,27 @@
-import { useState } from 'react';
 import Link from 'next/link';
 
 import { isObjInArray } from '@/utils';
 
+import { useFontSizeContext } from '@/context/FontSizeContext';
+
 import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
 import { addToFavorites, selectAllFavorites } from '@/store/favoritesSlice';
+
+import { Book } from '@/types';
+import { NextRouter } from 'next/router';
 
 interface NavBarProps {
   testament: string;
   book: string;
   chapter: string;
-  bookToParse: any;
-  router: any;
+  bookToParse: Book;
+  router: NextRouter;
 }
 
 export default function NavBar({ testament, book, chapter, bookToParse, router }: NavBarProps) {
+  const { changeFontSize } = useFontSizeContext();
   const dispatch = useAppDispatch();
   const favorites = useAppSelector(selectAllFavorites);
-
-  const [fontSize, setFontSize] = useState<string>('md'); // Make this with Context API
-  const FontSizeOptions: { [key: string]: number } = {
-    // sizes in px
-    sm: 14,
-    md: 16,
-    lg: 20,
-    xl: 24,
-  };
-  const changeFontSize = () => {
-    switch (fontSize) {
-      case 'sm':
-        setFontSize('md');
-        break;
-      case 'md':
-        setFontSize('lg');
-        break;
-      case 'lg':
-        setFontSize('xl');
-        break;
-      case 'xl':
-        setFontSize('sm');
-        break;
-      default:
-        break;
-    }
-  };
 
   const isFirstChapter = chapter === '1';
   const isLastChapter = Number(chapter) === bookToParse.numOfChapters;
