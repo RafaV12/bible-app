@@ -3,7 +3,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import { capitalizeFirstLetter, replaceDashesWithSpaces } from '@/utils/index'
+import { useAppSelector } from '@/hooks/reduxHooks';
+
+import { capitalizeFirstLetter, replaceDashesWithSpaces } from '@/utils/index';
 
 import newTestamentBooks from '@/../bible/new-testament/books.json';
 import oldTestamentBooks from '@/../bible/old-testament/books.json';
@@ -14,9 +16,10 @@ interface Book {
 }
 
 export default function Testament() {
+  const bookmark = useAppSelector((state) => state.bookmark);
   const router = useRouter();
   const { testament } = router.query;
-  
+
   let data;
   if (testament === 'new-testament') data = newTestamentBooks;
   if (testament === 'old-testament') data = oldTestamentBooks;
@@ -31,14 +34,14 @@ export default function Testament() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1 className="mb-4 font-semibold">{replaceDashesWithSpaces(capitalizeFirstLetter((testament as string)))}</h1>
+      <h1 className="mb-4 font-semibold">{replaceDashesWithSpaces(capitalizeFirstLetter(testament as string))}</h1>
       <section className="flex flex-col">
         {data?.books.map((book: Book, index) => (
           <figure key={index} className="mb-4">
             <figcaption className="mb-1 underline">{book.title}</figcaption>
             <ul>
               {book.content.map((item, index) => (
-                <li key={index}>
+                <li key={index} className="flex items-center">
                   <Link href={`/${testament}/${item.replaceAll(' ', '-').toLowerCase()}`} className="flex items-center">
                     {item}
                     <svg className="mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
@@ -46,6 +49,9 @@ export default function Testament() {
                       <path d="M16 12l-6 6V6z" />
                     </svg>
                   </Link>
+                  {bookmark.bookmarked && bookmark.bookmarkedChapter.book === item.replaceAll(' ', '-').toLowerCase() && (
+                    <i className="fa-solid fa-bookmark text-red-500"></i>
+                  )}
                 </li>
               ))}
             </ul>

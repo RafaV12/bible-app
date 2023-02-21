@@ -1,9 +1,13 @@
 import Head from 'next/head';
 import Link from 'next/link';
 
+import { useAppSelector } from '@/hooks/reduxHooks';
+
 export default function Home() {
-  const newTestament = 'new-testament'
-  const oldTestament = 'old-testament'
+  const bookmark = useAppSelector((state) => state.bookmark);
+  const newTestament = 'new-testament';
+  const oldTestament = 'old-testament';
+
   return (
     <div className="container min-h-screen flex flex-col lg:flex-row lg:justify-between lg:py-0 lg:px-4">
       <Head>
@@ -40,11 +44,23 @@ export default function Home() {
       <section className="mt-12 flex flex-col lg:w-2/5 lg:mt-0 lg:justify-center lg:-mt-24">
         <p className="font-semibold">Choose a testament:</p>
         <div className="mt-6 flex flex-col items-center gap-y-4 md:flex-row md:gap-x-4">
-          <Link className="p-4 w-full flex justify-center text-center border outline-none rounded-full" href={`/${newTestament}`}>
+          <Link
+            className="p-4 w-full flex justify-center items-center gap-x-4 text-center border outline-none rounded-full"
+            href={`/${newTestament}`}
+          >
             New testament
+            {bookmark.bookmarked && bookmark.bookmarkedChapter.testament === newTestament && (
+              <i className="mt-1 fa-solid fa-bookmark text-red-500"></i>
+            )}
           </Link>
-          <Link className="p-4 w-full flex justify-center text-center border outline-none rounded-full" href={`/${oldTestament}`}>
+          <Link
+            className="p-4 w-full flex justify-center items-center gap-x-4 text-center border outline-none rounded-full"
+            href={`/${oldTestament}`}
+          >
             Old testament
+            {bookmark.bookmarked && bookmark.bookmarkedChapter.testament === oldTestament && (
+              <i className="mt-1 fa-solid fa-bookmark text-red-500"></i>
+            )}
           </Link>
         </div>
 
@@ -56,4 +72,3 @@ export default function Home() {
     </div>
   );
 }
-

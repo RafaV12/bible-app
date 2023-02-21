@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import favoritesReducer from '@/store/favoritesSlice';
+import bookmarkReducer from '@/store/bookmarkSlice';
 
 export function makeStore() {
   return configureStore({
     reducer: {
       favorites: favoritesReducer,
+      bookmark: bookmarkReducer,
     },
   });
 }

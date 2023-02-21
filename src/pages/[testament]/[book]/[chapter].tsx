@@ -24,7 +24,7 @@ export default function Chapter() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <BookmarkBtn />
+      <BookmarkBtn testament={testament} book={book} chapter={chapter} />
 
       <FontSizeContextProvider>
         <Chapters bookToParse={bookToParse} chapter={chapter} />
