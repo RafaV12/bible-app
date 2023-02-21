@@ -23,17 +23,25 @@ export const bookmarkSlice = createSlice({
   initialState,
   reducers: {
     toggleBookmark: (state: Bookmark, action: PayloadAction<Bookmark['bookmarkedChapter']>) => {
-      // ** Changing bookmark to another chapter is bugged **
-      if (state.bookmarked) {
-        // Toggle off bookmark
+      // Check if we are toggling the same bookmarked chapter
+      if (state.bookmarked && JSON.stringify(state.bookmarkedChapter) === JSON.stringify(action.payload)) {
+        // Toggle bookmark off
         state.bookmarked = false;
         state.bookmarkedChapter = {
           testament: '',
           book: '',
           chapter: '',
         };
+        // Check if we are bookmarking a new chapter while another one is bookmarked already
+      } else if (state.bookmarked && JSON.stringify(state.bookmarkedChapter) !== JSON.stringify(action.payload)) {
+        // Change bookmark to new chapter selected
+        state.bookmarkedChapter = {
+          testament: action.payload.testament,
+          book: action.payload.book,
+          chapter: action.payload.chapter,
+        };
       } else {
-        // Bookmark chapter
+        // Toggle bookmark on
         state.bookmarked = true;
         state.bookmarkedChapter = {
           testament: action.payload.testament,
