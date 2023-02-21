@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface Bookmark {
+export interface Bookmark {
   bookmarked: boolean;
   bookmarkedChapter: {
     testament: string;
