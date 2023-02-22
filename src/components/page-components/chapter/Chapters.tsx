@@ -1,3 +1,6 @@
+import { motion, AnimatePresence } from 'framer-motion';
+import { v4 as uuidv4 } from 'uuid';
+
 import { useFontSizeContext } from '@/context/FontSizeContext';
 
 import { Book } from '@/types';
@@ -9,22 +12,29 @@ interface ChaptersProps {
 
 export default function Chapters({ bookToParse, chapter }: ChaptersProps) {
   const { fontSizeContext, fontSizeOptions } = useFontSizeContext();
+
   return (
-    <ul className="flex flex-col">
-      {bookToParse.chapters
-        .find((c) => c.chapter === chapter)
-        ?.verses.map((verse) => (
-          <li
-            style={{
-              fontSize: `${fontSizeOptions[fontSizeContext]}`,
-            }}
-            key={verse.verse}
-            className="flex"
-          >
-            <span className="mr-2 font-semibold">{verse.verse}</span>
-            <p>{verse.text}</p>
-          </li>
-        ))}
+    <ul className="flex flex-col gap-y-1">
+      <AnimatePresence>
+        {bookToParse.chapters
+          .find((c) => c.chapter === chapter)
+          ?.verses.map((verse) => (
+            <motion.li
+              key={uuidv4()}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              style={{
+                fontSize: `${fontSizeOptions[fontSizeContext]}`,
+              }}
+              className="flex"
+            >
+              <p>
+                <span className="mr-2 text-sm text-slate-500 float-left ">{verse.verse}</span>
+                {verse.text}
+              </p>
+            </motion.li>
+          ))}
+      </AnimatePresence>
     </ul>
   );
 }

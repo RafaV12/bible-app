@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import useBook from '@/hooks/useBook';
 import { FontSizeContextProvider } from '@/context/FontSizeContext';
 
+import Loading from '@/components/Loading';
 import NavBar from '@/components/page-components/chapter/NavBar';
 import Chapters from '@/components/page-components/chapter/Chapters';
 import BookmarkBtn from '@/components/page-components/chapter/BookmarkBtn';
@@ -13,7 +14,7 @@ export default function Chapter() {
   const { testament, book, chapter } = router.query as { testament: string; book: string; chapter: string };
   const bookToParse = useBook(book, testament);
 
-  if (chapter === undefined || bookToParse === undefined) return <>Loading...</>;
+  if (chapter === undefined || bookToParse === undefined) return <Loading />;
 
   return (
     <>

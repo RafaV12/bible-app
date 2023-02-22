@@ -29,7 +29,7 @@ export default function NavBar({ testament, book, chapter, bookToParse, router }
   const nextChapter = () => !isLastChapter && router.push(`/${testament}/${book}/${Number(chapter) + 1}`);
 
   return (
-    <div className="fixed left-1/2 transform -translate-x-1/2 bottom-0 px-4 w-full h-14 flex items-center justify-between bg-white shadow-2xl border-t border-slate-50">
+    <div className="fixed left-1/2 transform -translate-x-1/2 bottom-0 px-4 w-full h-14 flex items-center justify-between bg-white shadow-2xl border-t border-slate-50 z-10">
       <div className="flex items-center gap-x-4">
         {/* Previous chapter */}
         <button

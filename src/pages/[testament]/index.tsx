@@ -1,12 +1,13 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { motion } from 'framer-motion';
 
 import { useAppSelector } from '@/hooks/reduxHooks';
 
 import { capitalizeFirstLetter, replaceDashesWithSpaces } from '@/utils/index';
 
+import Loading from '@/components/Loading';
 import newTestamentBooks from '@/../bible/new-testament/books.json';
 import oldTestamentBooks from '@/../bible/old-testament/books.json';
 
@@ -23,7 +24,7 @@ export default function Testament() {
   let data;
   if (testament === 'new-testament') data = newTestamentBooks;
   if (testament === 'old-testament') data = oldTestamentBooks;
-  if (data === undefined) return <h1>Loading...</h1>;
+  if (data === undefined) return <Loading />;
 
   return (
     <>
@@ -35,7 +36,7 @@ export default function Testament() {
       </Head>
 
       <h1 className="mb-4 font-semibold">{replaceDashesWithSpaces(capitalizeFirstLetter(testament as string))}</h1>
-      <section className="flex flex-col">
+      <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} className="flex flex-col">
         {data?.books.map((book: Book, index) => (
           <figure key={index} className="mb-4">
             <figcaption className="mb-1 underline">{book.title}</figcaption>
@@ -57,7 +58,7 @@ export default function Testament() {
             </ul>
           </figure>
         ))}
-      </section>
+      </motion.section>
     </>
   );
 }

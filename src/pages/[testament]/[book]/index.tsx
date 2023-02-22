@@ -1,9 +1,12 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { motion } from 'framer-motion';
 
 import useBook from '@/hooks/useBook';
 import { useAppSelector } from '@/hooks/reduxHooks';
+
+import Loading from '@/components/Loading';
 
 export default function Chapters() {
   const bookmark = useAppSelector((state) => state.bookmark);
@@ -11,7 +14,7 @@ export default function Chapters() {
   const { book, testament } = router.query;
   const bookToParse = useBook(book as string, testament as string);
 
-  if (bookToParse === undefined) return <>Loading...</>;
+  if (bookToParse === undefined) return <Loading />;
 
   return (
     <>
@@ -23,7 +26,12 @@ export default function Chapters() {
       </Head>
 
       <h1 className="w-full h-12 flex items-center justify-center font-semibold text-lg">{bookToParse.book}</h1>
-      <section className="container flex flex-col items-start gap-y-4">
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="container flex flex-col items-start gap-y-4"
+      >
         {bookToParse.chapters?.map(({ chapter, verses }) => (
           <Link key={chapter} href={`/${testament}/${book}/${chapter}`} className="h-full flex items-center">
             <div>
@@ -35,12 +43,12 @@ export default function Chapters() {
               <path d="M16 12l-6 6V6z" />
             </svg>
 
-            {(bookmark.bookmarked && bookmark.bookmarkedChapter.book === book && bookmark.bookmarkedChapter.chapter === chapter) && (
+            {bookmark.bookmarked && bookmark.bookmarkedChapter.book === book && bookmark.bookmarkedChapter.chapter === chapter && (
               <i className="ml-2 fa-solid fa-bookmark text-red-500"></i>
             )}
           </Link>
         ))}
-      </section>
+      </motion.section>
     </>
   );
 }
