@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { isObjInArray } from '@/utils';
+import { isObjInArray, getItem } from '@/utils';
 import { RootState } from './configureStore';
 
 interface FavoriteChapter {
@@ -9,7 +9,7 @@ interface FavoriteChapter {
   chapter: string;
 }
 
-const initialState: FavoriteChapter[] = [];
+const initialState: FavoriteChapter[] = typeof window !== 'undefined' ? (getItem('favorites') ? getItem('favorites') : []) : [];
 
 export const favoritesSlice = createSlice({
   name: 'favorites',

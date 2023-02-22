@@ -1,6 +1,7 @@
 import Link from 'next/link';
+import { useEffect } from 'react';
 
-import { isObjInArray } from '@/utils';
+import { isObjInArray, setItem } from '@/utils';
 
 import { useFontSizeContext } from '@/context/FontSizeContext';
 
@@ -20,8 +21,12 @@ interface NavBarProps {
 
 export default function NavBar({ testament, book, chapter, bookToParse, router }: NavBarProps) {
   const { changeFontSize } = useFontSizeContext();
+
   const dispatch = useAppDispatch();
   const favorites = useAppSelector(selectAllFavorites);
+  useEffect(() => {
+    setItem('favorites', favorites);
+  }, [favorites]);
 
   const isFirstChapter = chapter === '1';
   const isLastChapter = Number(chapter) === bookToParse.numOfChapters;

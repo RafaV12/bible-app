@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 
 import { useAppSelector, useAppDispatch } from '@/hooks/reduxHooks';
 import { selectAllFavorites, deleteFromFavorites } from '@/store/favoritesSlice';
 
-import { replaceDashesWithSpaces, capitalizeFirstLetter } from '@/utils';
+import { replaceDashesWithSpaces, capitalizeFirstLetter, setItem } from '@/utils';
 
 export default function Favorites() {
   const favorites = useAppSelector(selectAllFavorites);
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    setItem('favorites', favorites);
+  }, [favorites]);
 
   return (
     <ul className="flex flex-wrap gap-x-4 gap-y-4">

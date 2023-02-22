@@ -1,5 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+//TODO: Persist state
+//TODO: Refactor if/else
+
 export interface Bookmark {
   bookmarked: boolean;
   bookmarkedChapter: {
