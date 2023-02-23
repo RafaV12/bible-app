@@ -43,9 +43,7 @@ export default function Chapters() {
               <path d="M16 12l-6 6V6z" />
             </svg>
 
-            {bookmark.bookmarked && bookmark.bookmarkedChapter.book === book && bookmark.bookmarkedChapter.chapter === chapter && (
-              <i className="ml-2 fa-solid fa-bookmark text-red-500"></i>
-            )}
+            {bookmark.book === book && bookmark.chapter === chapter && <i className="ml-2 fa-solid fa-bookmark text-red-500"></i>}
           </Link>
         ))}
       </motion.section>

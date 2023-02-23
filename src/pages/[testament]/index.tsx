@@ -50,9 +50,7 @@ export default function Testament() {
                       <path d="M16 12l-6 6V6z" />
                     </svg>
                   </Link>
-                  {bookmark.bookmarked && bookmark.bookmarkedChapter.book === item.replaceAll(' ', '-').toLowerCase() && (
-                    <i className="fa-solid fa-bookmark text-red-500"></i>
-                  )}
+                  {bookmark.book === item.replaceAll(' ', '-').toLowerCase() && <i className="fa-solid fa-bookmark text-red-500"></i>}
                 </li>
               ))}
             </ul>

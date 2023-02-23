@@ -49,18 +49,14 @@ export default function Home() {
             href={`/${newTestament}`}
           >
             New testament
-            {bookmark.bookmarked && bookmark.bookmarkedChapter.testament === newTestament && (
-              <i className="mt-1 fa-solid fa-bookmark text-red-500"></i>
-            )}
+            {bookmark.testament === newTestament && <i className="mt-1 fa-solid fa-bookmark text-red-500"></i>}
           </Link>
           <Link
             className="p-4 w-full flex justify-center items-center gap-x-4 text-center border outline-none rounded-full"
             href={`/${oldTestament}`}
           >
             Old testament
-            {bookmark.bookmarked && bookmark.bookmarkedChapter.testament === oldTestament && (
-              <i className="mt-1 fa-solid fa-bookmark text-red-500"></i>
-            )}
+            {bookmark.testament === oldTestament && <i className="mt-1 fa-solid fa-bookmark text-red-500"></i>}
           </Link>
         </div>
 
