@@ -1,4 +1,6 @@
-import React, { Dispatch, SetStateAction, createContext, useContext, useState } from 'react';
+import React, { Dispatch, SetStateAction, createContext, useContext, useState, useEffect } from 'react';
+
+import { getItem, setItem } from '@/utils';
 
 type Props = {
   children: React.ReactNode;
@@ -14,7 +16,8 @@ type Context = {
 const FontSizeContext = createContext<Context | null>(null);
 
 export const FontSizeContextProvider = ({ children }: Props) => {
-  const [fontSizeContext, setFontSizeContext] = useState<string>('md');
+  const initialState = getItem('font-size') ? getItem('font-size') : 'md';
+  const [fontSizeContext, setFontSizeContext] = useState<string>(initialState);
   const fontSizeOptions: { [key: string]: string } = {
     sm: '14px',
     md: '16px',
@@ -39,6 +42,10 @@ export const FontSizeContextProvider = ({ children }: Props) => {
         break;
     }
   };
+
+  useEffect(() => {
+    setItem('font-size', fontSizeContext);
+  }, [fontSizeContext]);
 
   return (
     <FontSizeContext.Provider

@@ -16,17 +16,11 @@ const initialState: Bookmark = {
   chapter: '',
 };
 
-if (typeof window !== 'undefined') {
-  // Perform localStorage action
-  console.log(getItem('bookmarked-chapter'));
-}
-
 export const bookmarkSlice = createSlice({
   name: 'bookmark',
   initialState,
   reducers: {
     toggleBookmark: (state: Bookmark, action: PayloadAction<Bookmark>) => {
-      console.log('fired')
       if (state.chapter === '') {
         // Add new bookmark
         return (state = { ...action.payload });
