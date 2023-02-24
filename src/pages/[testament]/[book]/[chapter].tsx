@@ -25,12 +25,17 @@ export default function Chapter() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <BookmarkBtn testament={testament} book={book} chapter={chapter} />
+      {/* Title */}
+      <div className="container flex items-center justify-center">
+        <h1 className="my-4 max-w-max text-2xl text-slate-700 font-semibold italic capitalize">{`${book} ${chapter}`}</h1>
+      </div>
 
       <FontSizeContextProvider>
         <Chapters bookToParse={bookToParse} chapter={chapter} />
         <NavBar testament={testament} book={book} chapter={chapter} bookToParse={bookToParse} router={router} />
       </FontSizeContextProvider>
+
+      <BookmarkBtn testament={testament} book={book} chapter={chapter} />
     </>
   );
 }

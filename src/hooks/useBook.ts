@@ -207,7 +207,7 @@ export default function useBook(book: string, testament: string) {
       case 'genesis':
         bookToParse = genesis;
         break;
-      case 'habakuk':
+      case 'habakkuk':
         bookToParse = habakkuk;
         break;
       case 'haggai':
