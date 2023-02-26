@@ -26,8 +26,8 @@ export default function Chapter() {
       </Head>
 
       {/* Title */}
-      <div className="container flex items-center justify-center">
-        <h1 className="my-4 max-w-max text-2xl text-slate-700 font-semibold italic capitalize">{`${book} ${chapter}`}</h1>
+      <div className="mt-2 mb-4 container flex items-center justify-center">
+        <h1 className="max-w-max text-2xl font-semibold italic capitalize">{`${book} ${chapter}`}</h1>
       </div>
 
       <FontSizeContextProvider>

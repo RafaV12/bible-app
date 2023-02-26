@@ -28,7 +28,7 @@ export default function Chapters({ bookToParse, chapter }: ChaptersProps) {
               }}
               className="flex"
             >
-              <p className='text-slate-900'>
+              <p>
                 <span className="mr-2 text-sm text-slate-500 float-left ">{verse.verse}</span>
                 {verse.text}
               </p>

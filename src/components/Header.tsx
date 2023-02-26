@@ -43,7 +43,7 @@ export default function Header() {
               className="absolute top-0 right-0 px-4 pt-10 w-3/5 h-screen flex flex-col gap-y-4 bg-white shadow-md z-20"
             >
               {navLinks.map((link, index) => (
-                <Link onClick={() => setIsMenuOpen(false)} key={index} className="pb-3 border-b flex items-center gap-x-2" href={link.url}>
+                <Link onClick={() => setIsMenuOpen(false)} key={index} className="pb-3 border-b flex bg-white items-center gap-x-2" href={link.url}>
                   <i className={`mt-0.5 ${link.icon}`}></i>
                   {link.title}
                 </Link>

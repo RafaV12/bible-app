@@ -35,11 +35,11 @@ export default function Testament() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1 className="mb-4 font-semibold">{replaceDashesWithSpaces(capitalizeFirstLetter(testament as string))}</h1>
+      <h1 className="mb-4 font-semibold text-2xl italic">{replaceDashesWithSpaces(capitalizeFirstLetter(testament as string))}</h1>
       <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} className="flex flex-col">
         {data?.books.map((book: Book, index) => (
           <figure key={index} className="mb-4">
-            <figcaption className="mb-1 underline">{book.title}</figcaption>
+            <figcaption className="mb-1 underline text-lg">{book.title}</figcaption>
             <ul>
               {book.content.map((item, index) => (
                 <li key={index} className="flex items-center">
