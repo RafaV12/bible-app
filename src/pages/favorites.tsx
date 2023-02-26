@@ -18,7 +18,7 @@ export default function Favorites() {
     <ul className="flex flex-wrap gap-x-4 gap-y-4">
       {favorites.length > 0 ? (
         favorites.map(({ testament, book, chapter }, index) => (
-          <li key={index} className="p-4 w-full border flex items-center justify-between shadow-md rounded-lg">
+          <li key={index} className="p-4 w-full flex items-center justify-between bg-white shadow rounded-lg">
             <Link className="flex items-center gap-x-4 capitalize" href={`/${testament}/${book}/${chapter}`}>
               <p>{replaceDashesWithSpaces(testament)}</p>
               <p>{`${replaceDashesWithSpaces(book)} : ${chapter}`}</p>

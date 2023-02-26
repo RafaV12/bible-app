@@ -29,21 +29,16 @@ export default function Chapters() {
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.3 }}
         className="mt-4 container flex flex-wrap gap-4 justify-center"
       >
         {bookToParse.chapters?.map(({ chapter, verses }) => (
-          <Link key={chapter} href={`/${testament}/${book}/${chapter}`} className="p-2 w-1/3 h-full bg-white shadow rounded-lg">
-            <div className='flex flex-col items-center'>
-              <p className="font-semibold underline">Chapter {chapter}</p>
-              <p>{`${verses.length} verses`}</p>
+          <Link key={chapter} href={`/${testament}/${book}/${chapter}`} className="relative p-2 w-1/4 h-full bg-white shadow rounded-lg">
+            <div className='flex flex-col gap-y-1 items-center'>
+              <p className="w-2/5 font-semibold border-b text-center border-slate-400">{chapter}</p>
+              <p className='text-sm'>{`${verses.length} verses`}</p>
             </div>
-            {/* <svg className="mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-              <path fill="none" d="M0 0h24v24H0z" />
-              <path d="M16 12l-6 6V6z" />
-            </svg> */}
-
-            {bookmark.book === book && bookmark.chapter === chapter && <i className="ml-2 fa-solid fa-bookmark text-red-500"></i>}
+            {bookmark.book === book && bookmark.chapter === chapter && <i className="fa-solid fa-bookmark absolute right-1.5 top-0 text-red-500"></i>}
           </Link>
         ))}
       </motion.section>

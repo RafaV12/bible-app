@@ -23,6 +23,7 @@ export default function Chapters({ bookToParse, chapter }: ChaptersProps) {
               key={uuidv4()}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
+              transition={{ ease: "easeIn", duration: 0.3 }}
               style={{
                 fontSize: `${fontSizeOptions[fontSizeContext]}`,
               }}

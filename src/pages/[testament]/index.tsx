@@ -36,7 +36,7 @@ export default function Testament() {
       </Head>
 
       <h1 className="mb-4 font-semibold text-2xl italic capitalize">{replaceDashesWithSpaces(testament as string)}</h1>
-      <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }} className="flex flex-col">
+      <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }} className="flex flex-col">
         {data?.books.map((book: Book, index) => (
           <figure key={index} className="mb-4">
             <figcaption className="mb-1 underline text-lg">{book.title}</figcaption>
