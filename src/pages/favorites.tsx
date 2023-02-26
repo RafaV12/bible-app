@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useAppSelector, useAppDispatch } from '@/hooks/reduxHooks';
 import { selectAllFavorites, deleteFromFavorites } from '@/store/favoritesSlice';
 
-import { replaceDashesWithSpaces, capitalizeFirstLetter, setItem } from '@/utils';
+import { replaceDashesWithSpaces, setItem } from '@/utils';
 
 export default function Favorites() {
   const favorites = useAppSelector(selectAllFavorites);
@@ -19,9 +19,9 @@ export default function Favorites() {
       {favorites.length > 0 ? (
         favorites.map(({ testament, book, chapter }, index) => (
           <li key={index} className="p-4 w-full border flex items-center justify-between shadow-md rounded-lg">
-            <Link className="flex items-center gap-x-4" href={`/${testament}/${book}/${chapter}`}>
-              <p>{capitalizeFirstLetter(replaceDashesWithSpaces(testament))}</p>
-              <p>{`${capitalizeFirstLetter(replaceDashesWithSpaces(book))} : ${chapter}`}</p>
+            <Link className="flex items-center gap-x-4 capitalize" href={`/${testament}/${book}/${chapter}`}>
+              <p>{replaceDashesWithSpaces(testament)}</p>
+              <p>{`${replaceDashesWithSpaces(book)} : ${chapter}`}</p>
             </Link>
             <i
               onClick={() => dispatch(deleteFromFavorites({ testament, book, chapter }))}
