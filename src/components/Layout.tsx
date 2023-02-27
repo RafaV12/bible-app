@@ -5,7 +5,7 @@ export default function Layout({ children }: { children: ReactNode }) {
   return (
     <>
       <Header />
-      <main className="p-4 pb-16">{children}</main>
+      <main className="p-4 pb-16 flex flex-col items-center">{children}</main>
     </>
   );
 }

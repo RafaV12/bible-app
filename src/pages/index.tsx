@@ -40,14 +40,14 @@ export default function Home() {
       <section className="mt-8 flex flex-col lg:w-2/5 lg:mt-0 lg:justify-center lg:-mt-24">
         <div className="mt-6 flex flex-col items-center gap-y-4 md:flex-row md:gap-x-4">
           <Link
-            className="p-4 w-full flex justify-center items-center gap-x-4 bg-white text-center shadow outline-none rounded-full"
+            className="p-4 w-full flex justify-center items-center gap-x-4 bg-white text-center shadow outline-none rounded-full transition ease-in 1s hover:bg-slate-50"
             href={`/${newTestament}`}
           >
             New testament
             {bookmark.testament === newTestament && <i className="mt-1 fa-solid fa-bookmark text-red-500"></i>}
           </Link>
           <Link
-            className="p-4 w-full flex justify-center items-center gap-x-4 bg-white text-center shadow outline-none rounded-full"
+            className="p-4 w-full flex justify-center items-center gap-x-4 bg-white text-center shadow outline-none rounded-full transition ease-in 1s hover:bg-slate-50"
             href={`/${oldTestament}`}
           >
             Old testament

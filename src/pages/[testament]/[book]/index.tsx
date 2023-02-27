@@ -33,7 +33,7 @@ export default function Chapters() {
         className="mt-4 container flex flex-wrap gap-4 justify-center"
       >
         {bookToParse.chapters?.map(({ chapter, verses }) => (
-          <Link key={chapter} href={`/${testament}/${book}/${chapter}`} className="relative p-2 w-1/4 h-full bg-white shadow rounded-lg">
+          <Link key={chapter} href={`/${testament}/${book}/${chapter}`} className="relative p-2 w-1/4 h-full bg-white shadow rounded-lg lg:max-w-max transition ease-in 1s hover:bg-slate-100">
             <div className='flex flex-col gap-y-1 items-center'>
               <p className="w-2/5 font-semibold border-b text-center border-slate-400">{chapter}</p>
               <p className='text-sm'>{`${verses.length} verses`}</p>

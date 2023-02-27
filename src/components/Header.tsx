@@ -23,9 +23,21 @@ export default function Header() {
         {/* LOGO IS JUST A PLACE HOLDER. AUTHOR: https://dribbble.com/shots/14513038-JoyVerse-Bible-App */}
         <img src="/logo.png" className="w-7 h-9" alt="" />
       </Link>
-      <i onClick={() => setIsMenuOpen(!isMenuOpen)} className="fa-solid fa-bars z-30"></i>
+      <button className="z-30 lg:hidden">
+        <i onClick={() => setIsMenuOpen(!isMenuOpen)} className="fa-solid fa-bars"></i>
+      </button>
 
-      {/* Menu */}
+      {/* Desktop menu */}
+      <nav className="hidden lg:flex items-center gap-x-6">
+        {navLinks.map((link, index) => (
+          <Link key={index} href={`${link.url}`} className="flex items-center gap-x-1">
+            <motion.i  whileHover={{ scale: 1.2 }} className={`mt-0.5 ${link.icon}`}></motion.i>
+            {link.title}
+          </Link>
+        ))}
+      </nav>
+
+      {/* Mobile menu */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
@@ -43,7 +55,12 @@ export default function Header() {
               className="absolute top-0 right-0 px-4 pt-10 w-3/5 h-screen flex flex-col gap-y-4 bg-white shadow-md z-20"
             >
               {navLinks.map((link, index) => (
-                <Link onClick={() => setIsMenuOpen(false)} key={index} className="pb-3 border-b flex bg-white items-center gap-x-2" href={link.url}>
+                <Link
+                  onClick={() => setIsMenuOpen(false)}
+                  key={index}
+                  className="pb-3 border-b flex bg-white items-center gap-x-2"
+                  href={link.url}
+                >
                   <i className={`mt-0.5 ${link.icon}`}></i>
                   {link.title}
                 </Link>

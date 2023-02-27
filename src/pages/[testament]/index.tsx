@@ -35,15 +35,15 @@ export default function Testament() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1 className="mb-4 font-semibold text-2xl italic capitalize">{replaceDashesWithSpaces(testament as string)}</h1>
-      <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }} className="flex flex-col">
+      <h1 className="mb-4 font-semibold text-2xl italic self-start capitalize">{replaceDashesWithSpaces(testament as string)}</h1>
+      <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }} className="flex flex-col self-start">
         {data?.books.map((book: Book, index) => (
           <figure key={index} className="mb-4">
-            <figcaption className="mb-1 underline text-lg">{book.title}</figcaption>
+            <figcaption className="mb-1 text-lg font-semibold text-slate-800">{book.title}</figcaption>
             <ul>
               {book.content.map((item, index) => (
                 <li key={index} className="flex items-center">
-                  <Link href={`/${testament}/${item.replaceAll(' ', '-').toLowerCase()}`} className="flex items-center">
+                  <Link href={`/${testament}/${item.replaceAll(' ', '-').toLowerCase()}`} className="flex items-center hover:underline">
                     {item}
                     <svg className="mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                       <path fill="none" d="M0 0h24v24H0z" />
