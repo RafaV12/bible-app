@@ -2,19 +2,19 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { getItem } from '@/utils';
 
-//TODO: Persist state
-
 export interface Bookmark {
   testament: string;
   book: string;
   chapter: string;
 }
 
-const initialState: Bookmark = {
-  testament: '',
-  book: '',
-  chapter: '',
-};
+const initialState: Bookmark = getItem('bookmarked-chapter')
+  ? getItem('bookmarked-chapter')
+  : {
+      testament: '',
+      book: '',
+      chapter: '',
+    };
 
 export const bookmarkSlice = createSlice({
   name: 'bookmark',

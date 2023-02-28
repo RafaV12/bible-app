@@ -1,12 +1,18 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import { useState, useEffect } from 'react';
 
 import { useAppSelector } from '@/hooks/reduxHooks';
 
 export default function Home() {
+  const [savedBookmark, setSavedBookmark] = useState('');
   const bookmark = useAppSelector((state) => state.bookmark);
   const newTestament = 'new-testament';
   const oldTestament = 'old-testament';
+
+  useEffect(() => {
+    setSavedBookmark(bookmark);
+  }, []);
 
   return (
     <div className="pt-4 container flex flex-col lg:flex-row lg:justify-between lg:py-0 lg:px-4">
@@ -44,14 +50,15 @@ export default function Home() {
             href={`/${newTestament}`}
           >
             New testament
-            {bookmark.testament === newTestament && <i className="mt-1 fa-solid fa-bookmark text-red-500"></i>}
+            {savedBookmark.testament === newTestament && <i className="mt-1 fa-solid fa-bookmark text-red-500"></i>}
           </Link>
+
           <Link
             className="p-4 w-full flex justify-center items-center gap-x-4 bg-white text-center shadow outline-none rounded-full transition ease-in 1s hover:bg-slate-50"
             href={`/${oldTestament}`}
           >
             Old testament
-            {bookmark.testament === oldTestament && <i className="mt-1 fa-solid fa-bookmark text-red-500"></i>}
+            {savedBookmark.testament === oldTestament && <i className="mt-1 fa-solid fa-bookmark text-red-500"></i>}
           </Link>
         </div>
 

@@ -7,9 +7,13 @@ export function isObjInArray(array: object[], object: object) {
 }
 
 export function getItem(key: string) {
-  return JSON.parse(localStorage.getItem(key)!);
+  if (typeof window !== 'undefined') {
+    return JSON.parse(localStorage.getItem(key)!);
+  }
 }
 
 export function setItem<T>(key: string, value: T) {
-  return localStorage.setItem(key, JSON.stringify(value));
+  if (typeof window !== 'undefined') {
+    return localStorage.setItem(key, JSON.stringify(value));
+  }
 }
