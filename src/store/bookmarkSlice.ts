@@ -2,6 +2,8 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { getItem } from '@/utils';
 
+import { Bookmark } from '@/types';
+
 export interface Bookmark {
   testament: string;
   book: string;

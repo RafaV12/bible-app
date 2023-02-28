@@ -13,3 +13,9 @@ export interface Book {
   numOfChapters: number;
   chapters: Chapter[];
 }
+
+export interface Bookmark {
+  testament: string;
+  book: string;
+  chapter: string;
+}

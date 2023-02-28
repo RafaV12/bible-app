@@ -2,10 +2,16 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
+import { Boomark } from '@/types';
+
 import { useAppSelector } from '@/hooks/reduxHooks';
 
 export default function Home() {
-  const [savedBookmark, setSavedBookmark] = useState('');
+  const [savedBookmark, setSavedBookmark] = useState<Bookmark>({
+    testament: '',
+    book: '',
+    chapter: '',
+  });
   const bookmark = useAppSelector((state) => state.bookmark);
   const newTestament = 'new-testament';
   const oldTestament = 'old-testament';
