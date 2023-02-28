@@ -4,12 +4,6 @@ import { getItem } from '@/utils';
 
 import { Bookmark } from '@/types';
 
-export interface Bookmark {
-  testament: string;
-  book: string;
-  chapter: string;
-}
-
 const initialState: Bookmark = getItem('bookmarked-chapter')
   ? getItem('bookmarked-chapter')
   : {
