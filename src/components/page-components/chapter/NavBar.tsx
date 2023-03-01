@@ -1,3 +1,4 @@
+// TODO: extract favorite button and create a separate component for it.
 import Link from 'next/link';
 import { useEffect } from 'react';
 
@@ -24,6 +25,7 @@ export default function NavBar({ testament, book, chapter, bookToParse, router }
 
   const dispatch = useAppDispatch();
   const favorites = useAppSelector(selectAllFavorites);
+
   useEffect(() => {
     setItem('favorites', favorites);
   }, [favorites]);
@@ -46,8 +48,9 @@ export default function NavBar({ testament, book, chapter, bookToParse, router }
         </button>
 
         {/* Home */}
-        <Link href={`/${testament}`}>
+        <Link className='tooltip' href={`/${testament}`}>
           <i className="fa-solid fa-book-bible text-2xl text-blue-400 "></i>
+          <span className='tooltiptext text-sm'>Change book</span>
         </Link>
 
         <button disabled={isObjInArray(favorites, { testament, book, chapter })} className="disabled:text-red-500 text-slate-300">
@@ -63,7 +66,8 @@ export default function NavBar({ testament, book, chapter, bookToParse, router }
       <div className="flex items-center gap-x-4">
         {/* Tool box */}
         <div>
-          <button onClick={changeFontSize} className="px-2 py-1 border bg-white rounded-lg">
+          <button onClick={changeFontSize} className="px-2 py-1 border bg-white rounded-lg tooltip">
+            <span className="tooltiptext text-sm">Change font size</span>
             Aa
           </button>
         </div>

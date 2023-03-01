@@ -35,8 +35,15 @@ export default function Testament() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1 className="mb-4 font-semibold text-2xl italic self-start capitalize">{replaceDashesWithSpaces(testament as string)}</h1>
-      <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }} className="flex flex-col self-start">
+      <h1 className="mb-4 mt-2 font-semibold text-2xl italic self-start capitalize lg:self-center">
+        {replaceDashesWithSpaces(testament as string)}
+      </h1>
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.3 }}
+        className="flex flex-col self-start lg:flex-row lg:self-center lg:gap-x-6"
+      >
         {data?.books.map((book: Book, index) => (
           <figure key={index} className="mb-4">
             <figcaption className="mb-1 text-lg font-semibold text-slate-800">{book.title}</figcaption>
@@ -44,13 +51,13 @@ export default function Testament() {
               {book.content.map((item, index) => (
                 <li key={index} className="flex items-center">
                   <Link href={`/${testament}/${item.replaceAll(' ', '-').toLowerCase()}`} className="flex items-center hover:underline">
-                    {item}
+                    <span className="lg:order-last">{item}</span>
                     <svg className="mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                       <path fill="none" d="M0 0h24v24H0z" />
                       <path d="M16 12l-6 6V6z" />
                     </svg>
                   </Link>
-                  {bookmark.book === item.replaceAll(' ', '-').toLowerCase() && <i className="fa-solid fa-bookmark text-red-500"></i>}
+                  {bookmark.book === item.replaceAll(' ', '-').toLowerCase() && <i className="fa-solid fa-bookmark mt-1 ml-2 text-red-500"></i>}
                 </li>
               ))}
             </ul>

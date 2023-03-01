@@ -26,7 +26,7 @@ export default function BookmarkBtn({ testament, book, chapter }: BookmarkBtnPro
       }}
       className={`fixed bottom-20 right-4 px-4 py-3 ${
         JSON.stringify(bookmark) === JSON.stringify({ testament, book, chapter }) ? 'text-red-500' : 'text-slate-300'
-      } border rounded-full text-sm z-10 disabled:text-red-500`}
+      } border rounded-full text-sm z-10 disabled:text-red-500 transition ease 1s hover:text-red-500 hover:shadow hover:border-white`}
     >
       <i className="fa-solid fa-bookmark"></i>
     </button>

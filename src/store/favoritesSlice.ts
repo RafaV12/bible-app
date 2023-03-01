@@ -1,3 +1,4 @@
+// TODO: Make favorite button toggleable, instead of having a different button to remove
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { isObjInArray, getItem } from '@/utils';

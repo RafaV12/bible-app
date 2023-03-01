@@ -24,7 +24,7 @@ export default function Chapters({ bookToParse, chapter }: ChaptersProps) {
   // }, []);
 
   return (
-    <ul className="flex flex-col gap-y-1">
+    <ul className="flex flex-col gap-y-1 lg:w-3/4">
       {bookToParse.chapters
         .find((c) => c.chapter === chapter)
         ?.verses.map((verse) => (
