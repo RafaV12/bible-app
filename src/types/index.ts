@@ -1,3 +1,5 @@
+import { type } from 'os';
+
 export interface Verse {
   verse: string;
   text: string;
@@ -19,3 +21,5 @@ export interface Bookmark {
   book: string;
   chapter: string;
 }
+
+export type FavoriteChapter = Bookmark;

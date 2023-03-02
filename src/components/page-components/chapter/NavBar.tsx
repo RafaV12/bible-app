@@ -7,7 +7,7 @@ import { isObjInArray, setItem } from '@/utils';
 import { useFontSizeContext } from '@/context/FontSizeContext';
 
 import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
-import { addToFavorites, selectAllFavorites } from '@/store/favoritesSlice';
+import { toggleFavorite, selectAllFavorites } from '@/store/favoritesSlice';
 
 import { Book } from '@/types';
 import { NextRouter } from 'next/router';
@@ -54,7 +54,7 @@ export default function NavBar({ testament, book, chapter, bookToParse, router }
         </Link>
 
         <button disabled={isObjInArray(favorites, { testament, book, chapter })} className="disabled:text-red-500 text-slate-300">
-          <i onClick={() => dispatch(addToFavorites({ testament, book, chapter }))} className="fa-solid fa-heart"></i>
+          <i onClick={() => dispatch(toggleFavorite({ testament, book, chapter }))} className="fa-solid fa-heart"></i>
         </button>
       </div>
 

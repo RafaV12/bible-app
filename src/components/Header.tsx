@@ -10,11 +10,6 @@ export default function Header() {
       url: '/favorites',
       icon: 'fa-regular fa-heart',
     },
-    {
-      title: 'Highlights',
-      url: '/highlights',
-      icon: 'fa-solid fa-highlighter',
-    },
   ];
 
   return (
@@ -23,6 +18,7 @@ export default function Header() {
         {/* LOGO IS JUST A PLACE HOLDER. AUTHOR: https://dribbble.com/shots/14513038-JoyVerse-Bible-App */}
         <img src="/logo.png" className="w-7 h-9" alt="" />
       </Link>
+
       <button className="z-30 lg:hidden">
         <i onClick={() => setIsMenuOpen(!isMenuOpen)} className="fa-solid fa-bars"></i>
       </button>
@@ -31,7 +27,7 @@ export default function Header() {
       <nav className="hidden lg:flex items-center gap-x-6">
         {navLinks.map((link, index) => (
           <Link key={index} href={`${link.url}`} className="flex items-center gap-x-1">
-            <motion.i  whileHover={{ scale: 1.2 }} className={`mt-0.5 ${link.icon}`}></motion.i>
+            <motion.i whileHover={{ scale: 1.2 }} className={`mt-0.5 ${link.icon}`}></motion.i>
             {link.title}
           </Link>
         ))}
