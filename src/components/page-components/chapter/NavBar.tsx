@@ -48,12 +48,12 @@ export default function NavBar({ testament, book, chapter, bookToParse, router }
         </button>
 
         {/* Home */}
-        <Link className='tooltip' href={`/${testament}`}>
+        <Link className="tooltip" href={`/${testament}`}>
           <i className="fa-solid fa-book-bible text-2xl text-blue-400 "></i>
-          <span className='tooltiptext text-sm'>Change book</span>
+          <span className="tooltiptext text-sm">Change book</span>
         </Link>
 
-        <button disabled={isObjInArray(favorites, { testament, book, chapter })} className="disabled:text-red-500 text-slate-300">
+        <button className={` ${isObjInArray(favorites, { testament, book, chapter }) ? 'text-red-500' : 'text-slate-300'}`}>
           <i onClick={() => dispatch(toggleFavorite({ testament, book, chapter }))} className="fa-solid fa-heart"></i>
         </button>
       </div>

@@ -24,10 +24,15 @@ export const favoritesSlice = createSlice({
         state.push(action.payload);
       }
     },
+
+    clearAll: (state: FavoriteChapter[]) => {
+      console.log('Clear all');
+      return [];
+    },
   },
 });
 
-export const { toggleFavorite } = favoritesSlice.actions;
+export const { toggleFavorite, clearAll } = favoritesSlice.actions;
 
 export const selectAllFavorites = (state: RootState) => state.favorites;
 
