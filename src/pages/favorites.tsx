@@ -22,9 +22,11 @@ export default function Favorites() {
     <>
       <div className="w-full self-start flex items-center justify-between">
         <h1 className="mb-4 text-xl self-start font-semibold">Your favorite bible chapters</h1>
-        <button onClick={() => dispatch(clearAll())} className="-mt-1 px-2 py-1 bg-white shadow rounded-lg border">
-          Clear all
-        </button>
+        {savedFavorites.length > 0 && (
+          <button onClick={() => dispatch(clearAll())} className="-mt-3 px-2 py-1 bg-white shadow rounded-lg border">
+            Clear all
+          </button>
+        )}
       </div>
       <ul className="container self-start flex flex-col gap-x-4 gap-y-4 lg:flex-row lg:flex-wrap">
         {savedFavorites.length > 0 ? (

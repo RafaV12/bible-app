@@ -11,6 +11,7 @@ export default function Document() {
           crossOrigin="anonymous"
           referrerPolicy="no-referrer"
         />
+        <link rel="icon" type="image/png" sizes="32x32" href="/logo.png"></link>
       </Head>
       <body>
         <Main />

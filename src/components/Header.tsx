@@ -6,6 +6,11 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const navLinks = [
     {
+      title: 'Home',
+      url: '/',
+      icon: 'fa-sharp fa-solid fa-house',
+    },
+    {
       title: 'Favorites',
       url: '/favorites',
       icon: 'fa-regular fa-heart',

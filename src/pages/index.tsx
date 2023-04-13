@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
 import { Bookmark } from '@/types';
@@ -29,7 +30,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <section className="flex flex-col lg:w-2/5 lg:justify-center lg:-mt-24">
+      <section className="flex flex-col lg:w-2/5 lg:mt-12">
         <h1 className="text-6xl font-semibold">The bible</h1>
 
         <div className="mt-2 mb-6 flex items-center">
@@ -38,18 +39,28 @@ export default function Home() {
         </div>
 
         <p className="w-11/12">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem dolorum accusantium ratione ipsa alias maiores reprehenderit rem
-          praesentium aut. Amir dolir sit amet consectetur.
+          We believe that the Word of God has the power to transform lives. Whether you're looking to deepen your faith, find comfort in
+          times of trial, or simply explore the Christian faith, we invite you to join us on this journey. Start exploring our online Bible
+          platform today and discover the riches of God's Word for yourself.
         </p>
         <p className="mt-4 w-11/12">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem dolorum accusantium ratione ipsa alias maiores reprehenderit rem
-          praesentium aut. Amir dolir sit amet consectetur.
+          Whether you're a lifelong believer or just starting to explore the Christian faith, we have the tools and resources to help you
+          grow in your spiritual journey.
         </p>
       </section>
 
       <div className="hidden h-screen border-l border-black lg:block"></div>
 
-      <section className="mt-8 flex flex-col lg:w-2/5 lg:mt-0 lg:justify-center lg:-mt-24">
+      <section className="mt-8 flex flex-col lg:w-2/5 lg:mt-12">
+        <Image
+          src="https://i.pinimg.com/originals/32/92/0f/32920fe5a6a166c6cf95bbb891a348a1.png"
+          loading="lazy"
+          alt="Picture of the author"
+          width={250}
+          height={250}
+          className="hidden md:block self-center"
+        />
+
         <div className="mt-6 flex flex-col items-center gap-y-4 md:flex-row md:gap-x-4">
           <Link
             className="p-4 w-full flex justify-center items-center gap-x-4 bg-white text-center shadow outline-none rounded-full transition ease-in 1s hover:bg-slate-50"
@@ -69,8 +80,8 @@ export default function Home() {
         </div>
 
         <p className="hidden mt-8 lg:block">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos vitae earum inventore, explicabo excepturi sit cumque recusandae
-          error possimus accusamus ex, ipsa, incidunt commodi illum doloremque adipisci eum deleniti. Natus.
+          Simply select the testament of the Bible you'd like to read, and start exploring the timeless wisdom and guidance found within its
+          pages.
         </p>
       </section>
     </div>
